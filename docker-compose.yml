@@ -22,7 +22,7 @@ services:
       - back
       - pusher
       - front
-    volumes:
+    # volumes:
       # https://blog.gitguardian.com/how-to-improve-your-docker-containers-security-cheat-sheet/#don-t-expose-the-docker-daemon-socket
       # - /var/run/docker.sock:/var/run/docker.sock
       # - ./acme.json:/acme.json
