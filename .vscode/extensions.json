@@ -1,3 +1,7 @@
 {
-  "recommendations": ["hashicorp.terraform", "ms-azuretools.vscode-docker"]
+  "recommendations": [
+    "hashicorp.terraform",
+    "ms-azuretools.vscode-docker",
+    "jgclark.vscode-todo-highlight"
+  ]
 }
