@@ -8,7 +8,7 @@ services:
       - --entryPoints.web.address=:80
       # - --entrypoints.web.http.redirections.entryPoint.to=websecure
       # - --entrypoints.web.http.redirections.entryPoint.scheme=https
-      - --entryPoints.websecure.address=:443
+      # - --entryPoints.websecure.address=:443
       # - --certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}
       # - --certificatesresolvers.myresolver.acme.storage=/acme.json
       # used during the challenge
@@ -58,10 +58,10 @@ services:
       - "traefik.http.routers.front.rule=PathPrefix(`/`)"
       - "traefik.http.routers.front.entryPoints=web,traefik"
       - "traefik.http.services.front.loadbalancer.server.port=8080"
-      - "traefik.http.routers.front-ssl.rule=PathPrefix(`/`)"
-      - "traefik.http.routers.front-ssl.entryPoints=websecure"
-      - "traefik.http.routers.front-ssl.tls=true"
-      - "traefik.http.routers.front-ssl.service=front"
+      # - "traefik.http.routers.front-ssl.rule=PathPrefix(`/`)"
+      # - "traefik.http.routers.front-ssl.entryPoints=websecure"
+      # - "traefik.http.routers.front-ssl.tls=true"
+      # - "traefik.http.routers.front-ssl.service=front"
     restart: unless-stopped
 
   pusher:
@@ -86,11 +86,11 @@ services:
       - "traefik.http.routers.pusher.middlewares=strip-pusher-prefix@docker"
       - "traefik.http.routers.pusher.entryPoints=web"
       - "traefik.http.services.pusher.loadbalancer.server.port=8080"
-      - "traefik.http.routers.pusher-ssl.rule=PathPrefix(`/pusher`)"
-      - "traefik.http.routers.pusher-ssl.middlewares=strip-pusher-prefix@docker"
-      - "traefik.http.routers.pusher-ssl.entryPoints=websecure"
-      - "traefik.http.routers.pusher-ssl.tls=true"
-      - "traefik.http.routers.pusher-ssl.service=pusher"
+      # - "traefik.http.routers.pusher-ssl.rule=PathPrefix(`/pusher`)"
+      # - "traefik.http.routers.pusher-ssl.middlewares=strip-pusher-prefix@docker"
+      # - "traefik.http.routers.pusher-ssl.entryPoints=websecure"
+      # - "traefik.http.routers.pusher-ssl.tls=true"
+      # - "traefik.http.routers.pusher-ssl.service=pusher"
 
   # maps:
   #   image: thecodingmachine/nodejs:12-apache
@@ -138,11 +138,11 @@ services:
       - "traefik.http.routers.back.middlewares=strip-api-prefix@docker"
       - "traefik.http.routers.back.entryPoints=web"
       - "traefik.http.services.back.loadbalancer.server.port=8080"
-      - "traefik.http.routers.back-ssl.rule=PathPrefix(`/api`)"
-      - "traefik.http.routers.back-ssl.middlewares=strip-api-prefix@docker"
-      - "traefik.http.routers.back-ssl.entryPoints=websecure"
-      - "traefik.http.routers.back-ssl.tls=true"
-      - "traefik.http.routers.back-ssl.service=back"
+      # - "traefik.http.routers.back-ssl.rule=PathPrefix(`/api`)"
+      # - "traefik.http.routers.back-ssl.middlewares=strip-api-prefix@docker"
+      # - "traefik.http.routers.back-ssl.entryPoints=websecure"
+      # - "traefik.http.routers.back-ssl.tls=true"
+      # - "traefik.http.routers.back-ssl.service=back"
     restart: unless-stopped
 
   # uploader:
