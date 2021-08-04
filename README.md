@@ -30,3 +30,11 @@ This repo aims to document our effort to run thecodingmachine/workadventure on a
 
 
 \* We hope to have a docker-compose setup that uses the images rather then building from source.
+
+
+## Todo
+
+- [ ] Remove dependency to source. (Use prebuild images only)
+- [ ] Give the ec2 some more disk space
+- [ ] Test the cloud-init setup
+
