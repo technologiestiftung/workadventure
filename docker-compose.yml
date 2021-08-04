@@ -132,7 +132,7 @@ services:
       JITSI_URL: $JITSI_URL
       JITSI_ISS: $JITSI_ISS
       MAX_PER_GROUP: "$MAX_PER_GROUP"
-      REDIS_HOST: redis
+      # REDIS_HOST: redis
       NODE_ENV: development
 
     labels:
