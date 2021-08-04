@@ -15,7 +15,7 @@ services:
       # - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
     ports:
       - "9999:80"
-      - "4430:443"
+      # - "4430:443"
       # The Web UI (enabled by --api.insecure=true)
       - "8080:8080"
     depends_on:
@@ -25,7 +25,7 @@ services:
     volumes:
       # https://blog.gitguardian.com/how-to-improve-your-docker-containers-security-cheat-sheet/#don-t-expose-the-docker-daemon-socket
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./acme.json:/acme.json
+      # - ./acme.json:/acme.json
     restart: unless-stopped
 
   front:
@@ -58,6 +58,8 @@ services:
       - "traefik.http.routers.front.rule=PathPrefix(`/`)"
       - "traefik.http.routers.front.entryPoints=web,traefik"
       - "traefik.http.services.front.loadbalancer.server.port=8080"
+      - "traefik.http.routers.front.service=front"
+
       # - "traefik.http.routers.front-ssl.rule=PathPrefix(`/`)"
       # - "traefik.http.routers.front-ssl.entryPoints=websecure"
       # - "traefik.http.routers.front-ssl.tls=true"
@@ -84,6 +86,7 @@ services:
       - "traefik.http.middlewares.strip-pusher-prefix.stripprefix.prefixes=/pusher"
       - "traefik.http.routers.pusher.rule=PathPrefix(`/pusher`)"
       - "traefik.http.routers.pusher.middlewares=strip-pusher-prefix@docker"
+      - "traefik.http.routers.pusher.service=pusher"
       - "traefik.http.routers.pusher.entryPoints=web"
       - "traefik.http.services.pusher.loadbalancer.server.port=8080"
       # - "traefik.http.routers.pusher-ssl.rule=PathPrefix(`/pusher`)"
@@ -138,6 +141,8 @@ services:
       - "traefik.http.routers.back.middlewares=strip-api-prefix@docker"
       - "traefik.http.routers.back.entryPoints=web"
       - "traefik.http.services.back.loadbalancer.server.port=8080"
+      - "traefik.http.routers.back.service=back"
+
       # - "traefik.http.routers.back-ssl.rule=PathPrefix(`/api`)"
       # - "traefik.http.routers.back-ssl.middlewares=strip-api-prefix@docker"
       # - "traefik.http.routers.back-ssl.entryPoints=websecure"
@@ -179,8 +184,8 @@ services:
   #     - ./front:/usr/src/front
   #     - ./pusher:/usr/src/pusher
 
-  redis:
-    image: redis:6
+  # redis:
+  #   image: redis:6
 
 #  coturn:
 #    image: coturn/coturn:4.5.2
