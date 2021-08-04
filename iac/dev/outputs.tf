@@ -47,3 +47,8 @@ output "metadata_options" {
 output "ubuntu_ami" {
   value = data.aws_ami.ubuntu
 }
+
+
+output "cloud_init" {
+  value = data.template_cloudinit_config.config.rendered
+}
