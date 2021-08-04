@@ -7,6 +7,7 @@ services:
       - --providers.docker
       - --providers.docker.network=workadventure_default
       - --entryPoints.web.address=:80
+      - --log.level=DEBUG
       # - --entrypoints.web.http.redirections.entryPoint.to=websecure
       # - --entrypoints.web.http.redirections.entryPoint.scheme=https
       # - --entryPoints.websecure.address=:443
