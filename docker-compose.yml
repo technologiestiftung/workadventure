@@ -6,6 +6,7 @@ services:
       - --api.insecure=true
       - --providers.docker
       - --entryPoints.web.address=:80
+      # - --traefik.docker.network=traefik_default
       # - --entrypoints.web.http.redirections.entryPoint.to=websecure
       # - --entrypoints.web.http.redirections.entryPoint.scheme=https
       # - --entryPoints.websecure.address=:443
@@ -34,7 +35,7 @@ services:
       DEBUG_MODE: "$DEBUG_MODE"
       JITSI_URL: $JITSI_URL
       JITSI_PRIVATE_MODE: "$JITSI_PRIVATE_MODE"
-      # HOST: "0.0.0.0"
+      HOST: "127.0.0.1"
       # NODE_ENV: development
       PUSHER_URL: /pusher
       UPLOADER_URL: /uploader
