@@ -2,8 +2,13 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+echo "DEPRECATED"
+exit 0
+
+## parse flags with getopt
+
 sudo apt update
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common htop
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 sudo apt update
