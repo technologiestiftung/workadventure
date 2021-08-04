@@ -15,7 +15,7 @@ services:
       # used during the challenge
       # - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
     ports:
-      - "9999:80"
+      - "80:80"
       # - "4430:443"
       # The Web UI (enabled by --api.insecure=true)
       - "8080:8080"
